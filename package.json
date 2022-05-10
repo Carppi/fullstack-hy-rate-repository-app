@@ -8,7 +8,8 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "eject": "expo eject",
-    "lint": "eslint ./src/**/*.{js,jsx} App.js --no-error-on-unmatched-pattern"
+    "lint": "eslint ./src/**/*.{js,jsx} App.js --no-error-on-unmatched-pattern",
+    "preinstall": "npx npm-force-resolutions"
   },
   "dependencies": {
     "expo": "~44.0.0",
@@ -24,6 +25,9 @@
     "eslint": "^8.15.0",
     "eslint-plugin-react": "^7.29.4",
     "eslint-plugin-react-native": "^4.0.0"
+  },
+  "resolutions": {
+    "react-devtools-core": "4.14.0"
   },
   "private": true
 }
