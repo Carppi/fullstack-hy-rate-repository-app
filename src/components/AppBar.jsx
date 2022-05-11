@@ -6,11 +6,10 @@ import AppBarTab from './AppBarTab';
 const styles = StyleSheet.create({
   container: {
     paddingTop: Constants.statusBarHeight,
-    backgroundColor: theme.colors.barBackground,
+    backgroundColor: theme.colors.backgroundBar,
     display: 'flex',
     flexDirection: 'row',
   },
-  // ...
 });
 
 const AppBar = () => {

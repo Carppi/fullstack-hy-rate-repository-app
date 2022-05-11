@@ -4,7 +4,8 @@ const theme = {
     textSecondary: '#586069',
     white: '#ffffff',
     primary: '#0366d6',
-    barBackground: '#24292e',
+    backgroundBar: '#24292e',
+    backgroundMain: '#e1e4e8',
   },
   fontSizes: {
     body: 14,
@@ -19,6 +20,9 @@ const theme = {
   },
   borders: {
     borderRadius: 5
+  },
+  paddings: {
+    basic: 5
   }
 };
 

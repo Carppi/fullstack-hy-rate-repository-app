@@ -2,17 +2,28 @@ import { Image, StyleSheet, View } from 'react-native';
 import theme from '../theme';
 import Subheading from './Subheading';
 import Text from './Text'
+import RepositoryNumberElement from './RepositoryNumberElement';
 
 const styles = StyleSheet.create({
   container: {
     padding: 10,
     display: 'flex',
-    flexDirection: 'row'
+    flexDirection: 'row',
+    backgroundColor: theme.colors.white
+  },
+  justified: {
+    justifyContent: 'space-evenly'
+  },
+  containerWrap: {
+    flexWrap: 'wrap',
   },
   flexItem: {
-    paddingBottom: 5,
-    paddingLeft: 10,
-    flexGrow: 0,
+    paddingBottom: theme.paddings.basic,
+    paddingHorizontal: theme.paddings.basic,
+    flexGrow: 1,
+  },
+  flexShrink: {
+    flexShrink: 2,
   },
   avatar: {
     width: 66,
@@ -23,12 +34,23 @@ const styles = StyleSheet.create({
   languageTag: {
     backgroundColor: theme.colors.primary,
     alignSelf: 'flex-start',
-    padding: 5,
+    padding: theme.paddings.basic,
     borderRadius: theme.borders.borderRadius
   }
 });
 
 const RepositoryItem = ({repo}) => {
+
+  const evenContainerStyle = [
+    styles.container,
+    styles.justified,
+    styles.containerWrap
+  ]
+
+  const flexItemShrinkStyle = [
+    styles.flexItem,
+    styles.flexShrink
+  ]
   
   return (
     <View>
@@ -39,29 +61,25 @@ const RepositoryItem = ({repo}) => {
           }}
           style={styles.avatar}
         />
-        <View>
-          <View style={styles.flexItem}>
-            <Subheading fontWeight="bold">{repo.fullName}</Subheading>
-          </View>
-          <View style={styles.flexItem}>
-            <Text color="textSecondary">{repo.description}</Text>
-          </View>
-          <View style={styles.flexItem}>
-            <View style={styles.languageTag}>
-              <Text color="white">
-                {repo.language}
-              </Text>
-            </View>
+        <View style={flexItemShrinkStyle}>
+          <Subheading fontWeight="bold" style={styles.flexItem}>
+            {repo.fullName}
+          </Subheading>
+          <Text color="textSecondary" style={styles.flexItem}>
+            {repo.description}
+          </Text>
+          <View style={styles.languageTag}>
+            <Text color="white">
+              {repo.language}
+            </Text>
           </View>
         </View>
       </View>
-      <View style={styles.container}> 
-        <Text>
-          Stars: {repo.stargazersCount}{'\n'}
-          Forks: {repo.forksCount}{'\n'}
-          Reviews: {repo.reviewCount}{'\n'}
-          Rating: {repo.ratingAverage}
-        </Text>
+      <View style={evenContainerStyle}>
+        <RepositoryNumberElement flexStyle={styles.flexItem} text='Stars' number={repo.stargazersCount}/>
+        <RepositoryNumberElement flexStyle={styles.flexItem} text='Forks' number={repo.forksCount}/>
+        <RepositoryNumberElement flexStyle={styles.flexItem} text='Reviews' number={repo.reviewCount}/>
+        <RepositoryNumberElement flexStyle={styles.flexItem} text='Rating' number={repo.ratingAverage}/>
       </View>
     </View>
   );
