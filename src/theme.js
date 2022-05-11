@@ -22,7 +22,9 @@ const theme = {
     borderRadius: 5
   },
   paddings: {
-    basic: 5
+    basic: 5,
+    container: 10,
+    loginVertical: 15
   }
 };
 

@@ -6,7 +6,7 @@ import RepositoryNumberElement from './RepositoryNumberElement';
 
 const styles = StyleSheet.create({
   container: {
-    padding: 10,
+    padding: theme.paddings.container,
     display: 'flex',
     flexDirection: 'row',
     backgroundColor: theme.colors.white
