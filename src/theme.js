@@ -6,6 +6,7 @@ const theme = {
     primary: '#0366d6',
     backgroundBar: '#24292e',
     backgroundMain: '#e1e4e8',
+    errorRed: '#d73a4a'
   },
   fontSizes: {
     body: 14,
