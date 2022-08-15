@@ -7,6 +7,8 @@ import { Formik } from 'formik';
 
 import FormikTextInput from './FormikTextInput';
 
+import useSignIn from '../hooks/useSignIn';
+
 const styles = StyleSheet.create({
   container: {
     padding: theme.paddings.container,
@@ -49,11 +51,19 @@ const SignInForm = ({ onSubmit }) => {
 };
 
 const SignIn = () => {
-  const onSubmit = values => {
-    const username = values.username;
-    const password = values.password;
+  const [signIn] = useSignIn();
+  
+  const onSubmit = async (values) => {
+    const { username, password } = values;
 
-    console.log(`Username: ${username}, password: ${password}`)
+    try {
+      const { data } = await signIn({ username, password });
+      console.log("trying to log data")
+      console.log("Auth data on next line:");
+      console.log(data)
+    } catch (e) {
+      console.log(e);
+    }
   }
 
   return (
