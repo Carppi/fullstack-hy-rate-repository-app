@@ -4,6 +4,7 @@ import theme from '../theme';
 import * as yup from 'yup';
 import { Pressable, View, StyleSheet } from 'react-native';
 import { Formik } from 'formik';
+import { useNavigate } from 'react-router-native';
 
 import FormikTextInput from './FormikTextInput';
 
@@ -52,15 +53,14 @@ const SignInForm = ({ onSubmit }) => {
 
 const SignIn = () => {
   const [signIn] = useSignIn();
+  let navigate = useNavigate();
   
   const onSubmit = async (values) => {
     const { username, password } = values;
 
     try {
-      const { data } = await signIn({ username, password });
-      console.log("trying to log data")
-      console.log("Auth data on next line:");
-      console.log(data)
+      await signIn({ username, password });
+      navigate("/", { replace: true});
     } catch (e) {
       console.log(e);
     }
